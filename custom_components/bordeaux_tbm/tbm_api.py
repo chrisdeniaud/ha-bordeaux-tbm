@@ -2,7 +2,7 @@
 import requests
 from datetime import datetime
 from dateutil import tz
-from const import BASE_URL, API_KEY
+from .const import BASE_URL, API_KEY
 
 def get_lines():
     """Get available lines."""
