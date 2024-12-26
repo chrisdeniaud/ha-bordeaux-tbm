@@ -78,8 +78,8 @@ class TBMSensor(CoordinatorEntity, SensorEntity):
                 delay_str = f"{departure['delay']}min"
                 if int(departure['delay']) <= 1:
                     delay_str = "proche"
-                predictions.append(f"{departure['time']} ({delay_str})")
-            return ", ".join(predictions)
+                predictions.append(f"{departure['destination']} ({delay_str})")
+            return "\n".join(predictions)
         return "Aucun passage"
 
     @property

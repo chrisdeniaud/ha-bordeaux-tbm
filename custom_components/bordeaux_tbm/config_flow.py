@@ -30,14 +30,14 @@ class BordeauxTBMConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         line_options = {line['LineRef']['value']: f"{line['LineRef']['value']} - {line['LineName'][0]['value']}" 
                        for line in lines}
         
-        stops = await self.hass.async_add_executor_job(get_stops_for_line)
+        """stops = await self.hass.async_add_executor_job(get_stops_for_line)
         stop_options = {stops['StopAreaRef']['value']: f"{stops['StopAreaRef']['value']} - {stops['StopName']['value']}" 
-                       for stop in stops}
+                       for stop in stops}"""
         return self.async_show_form(
             step_id="user",
             data_schema=vol.Schema({
                 vol.Required(CONF_LINE): vol.In(line_options),
-                vol.Required(CONF_STOP): vol.In(stop_options), # str,
+                vol.Required(CONF_STOP): str,
                 vol.Required(CONF_DIRECTION, default="1"): vol.In({
                     "0": "Direction 0",
                     "1": "Direction 1"
