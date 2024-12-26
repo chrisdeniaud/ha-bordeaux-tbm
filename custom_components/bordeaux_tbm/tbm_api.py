@@ -10,12 +10,13 @@ def get_lines():
     data = response.json()
     return data['Siri']['LinesDelivery']['AnnotatedLineRef']
 
-def get_stops_for_line(line_ref):
+def get_stops_for_line():
     """Get stops for a specific line."""
     response = requests.get(f"{BASE_URL}stoppoints-discovery.json?AccountKey={API_KEY}")
     data = response.json()
     stops = data['Siri']['StopPointsDelivery']['AnnotatedStopPointRef']
-    return [stop for stop in stops if line_ref in stop['Lines'][0]['value']]
+    #return [stop for stop in stops if line_ref in stop['Lines'][0]['value']]
+    return [stop for stop in stops if 1 == 1]
 
 def get_next_departures(stop_ref, line_ref, direction_ref, num_predictions):
     """Get next departures for a stop."""
