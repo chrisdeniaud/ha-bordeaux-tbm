@@ -2,6 +2,7 @@
 
 Home Assistant integration for Bordeaux public transport (TBM) real-time information.
 
+
 ## Features
 - Real-time arrival predictions for TBM trams and buses
 - Configurable refresh interval
