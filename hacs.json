@@ -1,0 +1,9 @@
+{
+    "name": "Bordeaux TBM",
+    "hacs": "1.6.0",
+    "domains": [
+        "sensor"
+    ],
+    "iot_class": "cloud_polling",
+    "homeassistant": "2023.8.0"
+}
