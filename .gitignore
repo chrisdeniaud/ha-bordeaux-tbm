@@ -169,3 +169,4 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+custom_components/bordeaux_tbm/tmp_tst_api.py
