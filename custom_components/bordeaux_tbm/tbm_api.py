@@ -45,9 +45,16 @@ def get_next_departures(stop_ref, line_ref, direction_ref, num_predictions):
         ).replace(tzinfo=from_zone).astimezone(to_zone)
         
         delay = int((expected_time - now).total_seconds() // 60)
-        destination = departure['MonitoredVehicleJourney']['DestinationName'][0]['value']
-        direction = departure['MonitoredVehicleJourney']['DirectionName'][0]['value']
-        
+        # On prend des précautions car l'API n'est pas stable
+        destination = "Inconnue"
+        if 'DestinationName' in departure['MonitoredVehicleJourney']:
+            destination = departure['MonitoredVehicleJourney']['DestinationName'][0]['value']
+        direction = "Inconnue"
+        if 'DirectionName' in departure['MonitoredVehicleJourney']:
+            direction = departure['MonitoredVehicleJourney']['DirectionName'][0]['value']
+        if destination == "Inconnue":
+            destination = direction.upper()
+                    
         formatted_departures.append({
             'time': expected_time.strftime('%H:%M'),
             'delay': delay,
