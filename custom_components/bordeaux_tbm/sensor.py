@@ -90,9 +90,16 @@ class TBMSensor(CoordinatorEntity, SensorEntity):
         
         attributes = {}
         for i, departure in enumerate(self.coordinator.data, 1):
+            delay_str = f"{departure['delay']}min"
+            if int(departure['delay']) <= 1:
+                delay_str = "proche"
+
             attributes[f"passage_{i}"] = {
                 "heure": departure['time'],
-                "delai": departure['delay'],
+                "delai": delay_str,
                 "destination": departure['destination']
+            }
+            attributes[f"passage_{i}_delay_detination"] = {
+                f"{departure['destination']} ({delay_str})"
             }
         return attributes
