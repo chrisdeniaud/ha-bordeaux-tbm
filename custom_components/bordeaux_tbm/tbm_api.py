@@ -45,12 +45,14 @@ def get_next_departures(stop_ref, line_ref, direction_ref, num_predictions):
         ).replace(tzinfo=from_zone).astimezone(to_zone)
         
         delay = int((expected_time - now).total_seconds() // 60)
-        destination = departure['MonitoredVehicleJourney']['DirectionName'][0]['value']
+        destination = departure['MonitoredVehicleJourney']['DestinationName'][0]['value']
+        direction = departure['MonitoredVehicleJourney']['DirectionName'][0]['value']
         
         formatted_departures.append({
             'time': expected_time.strftime('%H:%M'),
             'delay': delay,
-            'destination': destination
+            'destination': destination,
+            'direction': direction
         })
     
     return formatted_departures

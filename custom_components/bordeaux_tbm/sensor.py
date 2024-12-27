@@ -97,9 +97,13 @@ class TBMSensor(CoordinatorEntity, SensorEntity):
             attributes[f"passage_{i}"] = {
                 "heure": departure['time'],
                 "delai": delay_str,
-                "destination": departure['destination']
+                "destination": departure['destination'],
+                "direction": departure['direction']
             }
-            attributes[f"passage_{i}_delay_detination"] = {
+            attributes[f"passage_{i}_delay_destination"] = {
                 f"{departure['destination']} {delay_str}"
+            }
+            attributes[f"passage_{i}_delay_direction"] = {
+                f"{departure['direction']} {delay_str}"
             }
         return attributes
